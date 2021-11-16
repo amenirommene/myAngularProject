@@ -1,0 +1,17 @@
+<p>list-fournisseurs works!</p>
+<div *ngFor="let f of list; let i=index">
+<fieldset *ngIf="f.idFournisseur <= 100" [style.background-color]="f.libelle=='hp' ? 'green' : 'yellow'" (dblclick)="delete(i)">
+    <legend>IdFournisseur : {{f.idFournisseur}}</legend>
+    <table>
+        <tr>
+            <td>Code: </td>
+            <!-- <td [style.font-weight]="f.code.substring(0,2)=='2A' ? 'bold' : ''">{{f.code}}</td> -->
+            <td [style.font-weight]="getColor(f.code)">{{f.code}}</td>
+        </tr>
+        <tr>
+            <td>Libelle : </td>
+            <td>{{f.libelle}}</td>
+        </tr>
+    </table>
+</fieldset>
+</div>

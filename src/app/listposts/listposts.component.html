@@ -1,0 +1,8 @@
+<p>Ajouter un post</p>
+
+<form [formGroup]="postForm" (submit)="addPost()">
+    id : <input type="text" formControlName="id"><br>
+    title : <input type="text" formControlName="title"><br>
+    author : <input type="text" formControlName="author">
+<input type="submit">
+</form>

@@ -1,0 +1,11 @@
+<ul class="list-group">
+<li class="list-group-item" *ngFor="let l of invoices">
+    {{l.idInvoice}} **  {{l.discountAmount}}** {{l.billAmount}}** {{l.dateBill}} **  {{l.Status}} <span class="badge badge-primary badge-pill">
+        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-success" (click)="editInvoice(l)">Update</button>
+    </span>
+</li>
+    </ul>
+<button class="btn btn-success" (click)="showAdd()">Add Invoice</button>
+<app-add-invoice (added)="Add($event)" *ngIf="showAddInvoice"></app-add-invoice>
+<app-edit-invoice [invoiceToEdit]="invoiceToEdit" (edited)="edit($event)" [invoiceToEdit2]="invoiceToEdit" *ngIf="show"></app-edit-invoice>

@@ -1,0 +1,60 @@
+<h1><u>Ajout d'un produit</u></h1>
+<form>
+    <table>
+        <tr>
+            <td>idProduit</td>
+            <td><input type="text" name="idp" [(ngModel)]="p.idProduit"></td>
+        </tr>
+        <tr>
+            <td>Code</td>
+            <td><input type="text" name="code" [(ngModel)]="p.code"></td>
+        </tr>
+        <tr>
+            <td>Libelle</td>
+            <td><input type="text" name="libelle" [(ngModel)]="p.libelle"></td>
+        </tr>
+        <tr>
+            <td>Prix unitaire</td>
+            <td><input type="text" name="prixu" [(ngModel)]="p.prixUnitaire"></td>
+        </tr>
+        <tr>
+            <td>Taux TVA</td>
+            <td><input type="text" name="tva" [(ngModel)]="p.tauxTVA"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button (click)="addProduct()">Ajouter</button></td>
+        </tr>
+    </table>
+</form>
+<ol>
+<!-- <div *ngFor="let p of listProduits; let i=index" [style.color]="p.prixUnitaire <= 50 ? 'blue' : ''" [style.font-style]="p.prixUnitaire <= 50 ? 'italic' : ''" [style.font-size.px]="p.prixUnitaire <= 50 ? '20' : ''"> -->
+ <!-- <div *ngFor="let p of listProduits; let i=index" [ngStyle]="{'color': p.prixUnitaire <= 50 ? 'blue' : '','font-style': p.prixUnitaire <= 50 ? 'italic' : '','font-size.px': p.prixUnitaire <= 50 ? '20' : ''}"> -->
+    <div id="div" *ngFor="let p of listProduits; let i=index" [ngClass]="p.prixUnitaire <= 50 ? 'newStyle' : ''">
+    <li>Produit: {{p.libelle}} <button (click)="modifyTVA(i)" [disabled]="p.tauxTVA == 0.02">Ajuster TVA</button></li>
+    <ul>
+        <li>Identifiant: {{p.idProduit}}</li>
+        <li>Code: {{p.code}}</li>
+        <li>Prix Unitaire: {{p.prixUnitaire}}</li>
+        <li>Taux TVA: {{p.tauxTVA}}</li>
+    </ul>
+    <span [hidden]="i!=nb">TVA modifiée</span>
+    </div>
+</ol>
+
+<h1><u>Recherche produit</u></h1>
+Code : <input type="text" [(ngModel)]="valcode">
+<ol>
+    <div *ngFor="let p of listProduits; let i=index">
+    <!-- <div *ngIf="p.code == valcode"> -->
+    <div *ngIf="valcode != '' && p.code.substring(0,valcode.length) == valcode">
+    <li>Produit: {{p.libelle}}</li>
+    <ul>
+        <li>Identifiant: {{p.idProduit}}</li>
+        <li>Code: {{p.code}}</li>
+        <li>Prix Unitaire: {{p.prixUnitaire}}</li>
+        <li>Taux TVA: {{p.tauxTVA}}</li>
+    </ul>
+    </div>
+    </div>
+</ol>

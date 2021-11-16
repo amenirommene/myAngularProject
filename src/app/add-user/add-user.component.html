@@ -1,0 +1,49 @@
+<form #f="ngForm" (submit)="add()">
+    
+    <div class="form-group">
+      <label>First Name</label>
+      <input name="firstname" [(ngModel)]="user.firstName" #first="ngModel" required minlength="3" pattern="[a-zA-Z]*" type="text" class="form-control">
+    </div>
+    <div *ngIf="first.touched && first.errors">
+       <app-errors [error]="first.errors"></app-errors>
+    </div>
+    <!-- <div class="alert alert-danger" role="alert" *ngIf="first.errors.pattern">
+        Le champ doit contenir que des lettres
+    </div> -->
+
+    <div class="form-group">
+        <label>Last Name</label>
+        <input name="lastname" minlength="3" pattern="[a-zA-Z]*" [(ngModel)]="user.lastName" #last="ngModel" required type="text" class="form-control">
+      </div>
+      <app-errors *ngIf="last.errors" [error]="last.errors"></app-errors>
+   
+    <div class="form-group">
+      <label>BirthDate</label>
+      <input name="BirthDate" [(ngModel)]="user.birthDate"  type="date" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input name="email" pattern="^[a-zA-Z0-9._-]+@gmail.com" [(ngModel)]="user.email"  type="email" class="form-control" id="email" #email="ngModel">
+      </div>
+      <app-errors *ngIf="email.invalid" [error]="email.errors"></app-errors>
+      <div class="form-group">
+        <label for="pwd">Password</label>
+        <input name="pwd" pattern="^[a-zA-Z0-9]{8,}?" ngModel #pwd="ngModel"  type="text" class="form-control" id="pwd">
+      </div>
+      <app-errors *ngIf="pwd.invalid" [error]="pwd.errors"></app-errors>
+      <div class="form-group">
+        <label for="profession">Profession</label>
+        <input name="profession" [(ngModel)]="user.profession"  type="text" class="form-control" id="profession">
+      </div>
+      <div class="form-group">
+        <label for="customerCategory">Customer Category</label>
+        <input name="customerCategory" [(ngModel)]="categorie" #customer="ngModel" pattern="Customer"   type="text" class="form-control" id="customerCategory">
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="customer.invalid">
+        La catégorie doit être égale à Customer
+    </div>
+      <div class="div-btn">
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Save</button>  
+     </div>
+    
+</form>

@@ -1,0 +1,51 @@
+<form #f="ngForm" (submit)="add(f.controls)">
+    <div ngForm #sg="ngForm">
+    <div class="form-group">
+      <label for="idp">Id Produit</label>
+      <input name="idproduit"  [(ngModel)]="produit.idProduit" #idp="ngModel" required type="text" class="form-control" id="idp">
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="idp.invalid">
+        Champ Obligatoire
+    </div>
+    <div class="form-group">
+      <label for="code">Code</label>
+      <input name="code" ngModel required pattern="[a-zA-Z-0-9]{8}" type="text" class="form-control" id="code">
+    </div>
+    <div class="form-group">
+        <label for="libelle">Libelle</label>
+        <input name="libelle" ngModel required minlength="3" type="text" class="form-control" id="libelle">
+      </div>
+      <div class="form-group">
+        <label for="pu">Prix unitaire</label>
+        <input name="prixu" ngModel required pattern="[0-9][1-9]*"  type="text" class="form-control" id="pu">
+      </div>
+      </div>
+      <div class="div-btn">
+        <button [hidden]="sg.valid" [disabled]="sg.invalid" type="submit" class="btn btn-primary">Suivant</button>  
+    </div>
+    <div  [hidden]="sg.invalid"> <!---*ngIf="sg.valid"-->
+      <div class="form-group">
+        <label for="dp">Id détails produit</label>
+        <input name="iddetailproduit" ngModel  required type="text" class="form-control" id="dp">
+      </div>
+      <div class="form-group">
+        <label for="datec">Date création</label>
+        <input name="datec" ngModel #date="ngModel"  required type="text" class="form-control" id="datec">
+      </div>
+      <div class="form-group" [hidden]="date.invalid">
+        <label for="datedm">Date dernière modification</label>
+        <input  name="datedm" ngModel required type="text" class="form-control" id="datedm">
+      </div>
+      <div class="form-group">
+        <label for="categoriep">Catégorie produit</label>
+        <select name="categoriep" ngModel required class="form-control" id="categoriep">
+            <option>Electromenager</option>
+            <option>Alimentaire</option>
+            <option>Quincaillerie</option>
+        </select>
+      </div>
+    </div>
+     <div class="div-btn">
+    <button [hidden]="f.invalid" type="submit" class="btn btn-primary">Ajouter</button>
+</div>
+</form>

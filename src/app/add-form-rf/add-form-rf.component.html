@@ -1,0 +1,39 @@
+<form [formGroup]="myForm" (submit)="addProduct()">
+    <div formGroupName="groupe1">
+    <div class="form-group"> 
+        <label>Id Produit</label> 
+        <input formControlName="idProduit" type="text" class="form-control"> 
+    </div>
+    <div class="form-group"> 
+        <label>Code</label> 
+        <input formControlName="code" type="text" class="form-control"> 
+    </div>
+    <div class="form-group"> 
+        <label>Libelle</label> 
+        <input formControlName="libelle" type="text" class="form-control"> 
+    </div>
+    <div class="form-group"> 
+        <label>Prix unitaire</label> 
+        <input formControlName="prixUnitaire" type="text" class="form-control"> 
+    </div>
+</div>
+<div formGroupName="groupe2">
+    <div class="form-group"> 
+        <label>id détails Produit</label> 
+        <input formControlName="idDetailsProduit" type="text" class="form-control"> 
+    </div>
+    <div class="form-group"> 
+        <label>Date Création</label> 
+        <input formControlName="dateCreation" type="text" class="form-control"> 
+    </div>
+    <div class="form-group"> 
+        <label>Date dernière modification</label> 
+        <input formControlName="dateDerniereModification" type="text" class="form-control"> 
+    </div>
+    <div class="form-group"> 
+        <label>Catégorie produit</label> 
+        <input formControlName="categorieProduit" type="text" class="form-control"> 
+    </div>
+</div>
+<input type="submit" value="ajouter">
+    </form>
